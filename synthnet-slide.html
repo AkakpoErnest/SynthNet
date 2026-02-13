@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynthNet — Subnet Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      min-height: 100vh;
+      color: #e2e8f0;
+      padding: 3rem 4rem;
+      line-height: 1.5;
+    }
+    .slide {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #3B82F6, #06B6D4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 2.5rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #06B6D4;
+      margin-bottom: 0.75rem;
+    }
+    section p, section ul {
+      font-size: 1rem;
+      color: #cbd5e1;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.35rem;
+    }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3B82F6;
+    }
+    .blocker {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+    .support-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60A5FA;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      SynthNet
+    </div>
+
+    <h1>Decentralized synthetic data generation on Bittensor</h1>
+    <p class="subtitle">Subnet idea & current focus</p>
+
+    <section>
+      <h2>In one sentence</h2>
+      <p>SynthNet is a Bittensor subnet that acts as a decentralized marketplace for synthetic data: users request datasets (text, code, or conversations), miners produce them, and validators score quality on-chain so that supply, demand, and rewards align without a central operator.</p>
+    </section>
+
+    <section>
+      <h2>What we've worked on</h2>
+      <ul>
+        <li><strong>Miner role design</strong> — miners generate datasets; trust, incentive, and dividends metrics.</li>
+        <li><strong>Validator role design</strong> — validators have permits and score miner output.</li>
+        <li>Task assignment / scoring logic and evaluation mechanisms (in design and UI).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Main challenges</h2>
+      <ul>
+        <li><strong>Designing sustainable incentives</strong> (biggest focus)</li>
+        <li>Defining a clear proof of intelligence or effort</li>
+        <li>Evaluation and scoring design</li>
+        <li>Preventing adversarial or low-quality behavior</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Biggest blocker</h2>
+      <div class="blocker">
+        Defining incentive curves and emission rules so that miners are rewarded for high-quality synthetic data rather than volume, and validators for accurate scoring, without making emissions unsustainable or easy to game. Still figuring out how to tie TAO flow to measurable quality (e.g. downstream usefulness or human/validator agreement) in a way that stays simple and on-chain.
+      </div>
+    </section>
+
+    <section>
+      <h2>Support that would help most</h2>
+      <div class="support-tags">
+        <span class="tag">Example subnet designs</span>
+        <span class="tag">Incentive or mechanism design discussion</span>
+        <span class="tag">Feedback on proposal drafts</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

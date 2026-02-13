@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynthNet — Product Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: #0F172A;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .slide {
+      width: 100%;
+      min-height: 100vh;
+      padding: 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      page-break-after: always;
+    }
+    .slide:last-child { page-break-after: auto; }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3B82F6, #06B6D4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #06B6D4;
+      margin-bottom: 1rem;
+    }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-top: 0.5rem; }
+    p { color: #cbd5e1; font-size: 1.05rem; }
+    ul { list-style: none; padding-left: 0; }
+    ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: #cbd5e1;
+    }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3B82F6;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60A5FA;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .flow-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .flow-item {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      flex: 1;
+      min-width: 140px;
+    }
+    .flow-arrow { color: #06B6D4; font-size: 1.5rem; }
+    .stat { font-size: 2rem; font-weight: 700; color: #60A5FA; }
+    .blocker {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .slide-num { position: absolute; bottom: 2rem; right: 4rem; font-size: 0.8rem; color: #64748b; }
+    .slide { position: relative; }
+
+    @media print {
+      .slide {
+        min-height: 100vh;
+        page-break-after: always;
+      }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    /* PDF generation: open in browser, File > Print > Save as PDF. Enable "Background graphics". */
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <div class="slide">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      SynthNet
+    </div>
+    <h1>Decentralized Synthetic Data Generation</h1>
+    <p class="subtitle">A Bittensor subnet marketplace for high-quality synthetic datasets</p>
+    <div style="margin-top: 3rem;">
+      <span class="tag">Bittensor</span>
+      <span class="tag">Synthetic Data</span>
+      <span class="tag">Decentralized AI</span>
+    </div>
+    <span class="slide-num">1 / 10</span>
+  </div>
+
+  <!-- Slide 2: The Problem -->
+  <div class="slide">
+    <h2>The Problem</h2>
+    <h1 style="font-size: 1.8rem; -webkit-text-fill-color: initial; color: #fff;">Why synthetic data matters</h1>
+    <ul style="margin-top: 2rem; margin-bottom: 1.5rem;">
+      <li>AI models need large, diverse datasets — real data is scarce, expensive, or privacy-sensitive</li>
+      <li>Centralized synthetic data providers create lock-in, opacity, and single points of failure</li>
+      <li>Quality is hard to verify; incentives often favor volume over usefulness</li>
+      <li>No transparent marketplace where demand meets supply with on-chain accountability</li>
+    </ul>
+    <p>SynthNet aims to solve this with a decentralized, incentive-aligned marketplace.</p>
+    <span class="slide-num">2 / 10</span>
+  </div>
+
+  <!-- Slide 3: The Solution -->
+  <div class="slide">
+    <h2>The Solution</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">SynthNet in one sentence</h1>
+    <p style="font-size: 1.15rem; margin-top: 1.5rem; line-height: 1.6;">
+      SynthNet is a Bittensor subnet that acts as a <strong>decentralized marketplace for synthetic data</strong>: users request datasets (text, code, or conversations), miners produce them, and validators score quality on-chain so that supply, demand, and rewards align without a central operator.
+    </p>
+    <div style="margin-top: 2rem;" class="flow-row">
+      <div class="flow-item"><strong>Users</strong> → Request data</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item"><strong>Miners</strong> → Generate datasets</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item"><strong>Validators</strong> → Score quality</div>
+    </div>
+    <span class="slide-num">3 / 10</span>
+  </div>
+
+  <!-- Slide 4: How It Works -->
+  <div class="slide">
+    <h2>How It Works</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Marketplace flow</h1>
+    <ul style="margin-top: 2rem;">
+      <li><strong>Request</strong> — Users specify data type (text, code, conversations), format, volume, and constraints</li>
+      <li><strong>Generate</strong> — Miners compete to produce datasets that meet the spec</li>
+      <li><strong>Validate</strong> — Validators with permits evaluate quality and score on-chain</li>
+      <li><strong>Reward</strong> — TAO flows to miners and validators based on quality, not just volume</li>
+    </ul>
+    <p style="margin-top: 1.5rem;">All scoring and emissions happen on-chain — no central authority curates or gates the market.</p>
+    <span class="slide-num">4 / 10</span>
+  </div>
+
+  <!-- Slide 5: Key Features -->
+  <div class="slide">
+    <h2>Key Features</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Why SynthNet</h1>
+    <div class="two-col" style="margin-top: 2rem;">
+      <div class="card">
+        <h3>Decentralized quality</h3>
+        <p>Miners compete to produce the best synthetic data. Validators score and reward quality on-chain.</p>
+      </div>
+      <div class="card">
+        <h3>Any data type</h3>
+        <p>Text, code, conversations — request the format you need. Multi-step forms with real-time validation.</p>
+      </div>
+      <div class="card">
+        <h3>Real-time pipeline</h3>
+        <p>Watch generations in progress, inspect samples, and download verified datasets from the marketplace.</p>
+      </div>
+      <div class="card">
+        <h3>Verifiable & on-chain</h3>
+        <p>Train better models with datasets whose quality is attested by the network.</p>
+      </div>
+    </div>
+    <span class="slide-num">5 / 10</span>
+  </div>
+
+  <!-- Slide 6: Network Stats -->
+  <div class="slide">
+    <h2>Network Overview</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">By the numbers</h1>
+    <div class="two-col" style="margin-top: 2rem; gap: 1.5rem;">
+      <div class="flow-item">
+        <div class="stat">342</div>
+        <p>Active miners</p>
+      </div>
+      <div class="flow-item">
+        <div class="stat">15,847</div>
+        <p>Total datasets generated</p>
+      </div>
+      <div class="flow-item">
+        <div class="stat">94.2/100</div>
+        <p>Average quality score</p>
+      </div>
+      <div class="flow-item">
+        <div class="stat">99.8%</div>
+        <p>Network uptime</p>
+      </div>
+    </div>
+    <p style="margin-top: 2rem;">Example datasets: Customer service conversations (1,000 samples, Quality 96), Python function examples (500, 91), Product descriptions (2,500, 93).</p>
+    <span class="slide-num">6 / 10</span>
+  </div>
+
+  <!-- Slide 7: Miner Role -->
+  <div class="slide">
+    <h2>Miner Role</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Design & incentives</h1>
+    <ul style="margin-top: 2rem;">
+      <li><strong>Generate datasets</strong> — Miners produce synthetic data (text, code, conversations) based on user requests</li>
+      <li><strong>Trust, incentive, dividends</strong> — Metrics track miner reliability and contribution</li>
+      <li><strong>Task assignment</strong> — Design ensures miners are matched to requests they can fulfill</li>
+      <li><strong>Scoring logic</strong> — Quality evaluation mechanisms (in design and UI)</li>
+    </ul>
+    <p style="margin-top: 1.5rem;">Miners are rewarded for high-quality output, not volume — the core of sustainable incentives.</p>
+    <span class="slide-num">7 / 10</span>
+  </div>
+
+  <!-- Slide 8: Validator Role -->
+  <div class="slide">
+    <h2>Validator Role</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Quality assurance</h1>
+    <ul style="margin-top: 2rem;">
+      <li><strong>Permits</strong> — Validators hold permits to participate in scoring</li>
+      <li><strong>Score miner output</strong> — Evaluate datasets for quality, usefulness, and spec adherence</li>
+      <li><strong>On-chain consensus</strong> — Scores and rewards flow through the Bittensor protocol</li>
+      <li><strong>Aligned incentives</strong> — Validators rewarded for accurate scoring, not gaming</li>
+    </ul>
+    <p style="margin-top: 1.5rem;">Validators are the bridge between raw miner output and verified, usable datasets.</p>
+    <span class="slide-num">8 / 10</span>
+  </div>
+
+  <!-- Slide 9: Challenges & Opportunities -->
+  <div class="slide">
+    <h2>Challenges & Opportunities</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Building for the long term</h1>
+    <ul style="margin-top: 2rem;">
+      <li><strong>Sustainable incentives</strong> — Reward quality over volume; prevent gaming</li>
+      <li><strong>Proof of intelligence</strong> — Define measurable effort or usefulness</li>
+      <li><strong>Evaluation design</strong> — Scoring that stays simple and on-chain</li>
+      <li><strong>Adversarial behavior</strong> — Guard against low-quality or Sybil-type attacks</li>
+    </ul>
+    <div class="blocker" style="margin-top: 2rem;">
+      <strong>Biggest blocker:</strong> Defining incentive curves and emission rules so that TAO flow ties to measurable quality (e.g. downstream usefulness or human/validator agreement) without making emissions unsustainable or easy to game.
+    </div>
+    <span class="slide-num">9 / 10</span>
+  </div>
+
+  <!-- Slide 10: Call to Action -->
+  <div class="slide">
+    <h2>Get Involved</h2>
+    <h1 style="font-size: 1.6rem; -webkit-text-fill-color: initial; color: #fff;">Next steps</h1>
+    <p style="margin-top: 2rem; font-size: 1.1rem;">
+      <strong>Users:</strong> Request synthetic data — choose type, set specs, get high-quality datasets from the SynthNet subnet.
+    </p>
+    <p style="margin-top: 1rem; font-size: 1.1rem;">
+      <strong>Support we need:</strong>
+    </p>
+    <div style="margin-top: 1rem;">
+      <span class="tag">Example subnet designs</span>
+      <span class="tag">Incentive / mechanism design discussion</span>
+      <span class="tag">Feedback on proposal drafts</span>
+    </div>
+    <p style="margin-top: 2rem; font-size: 1.2rem;">
+      <strong>SynthNet</strong> — Decentralized synthetic data generation on Bittensor.
+    </p>
+    <span class="slide-num">10 / 10</span>
+  </div>
+
+</body>
+</html>

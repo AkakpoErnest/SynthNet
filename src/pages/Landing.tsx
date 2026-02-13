@@ -51,8 +51,8 @@ export default function Landing() {
 
   return (
     <div className="relative">
-      {/* Hero with parallax-style gradient overlay */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Hero - no video, solid background for 3D scene */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0F172A]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A] via-transparent to-[#0F172A] z-10 pointer-events-none" />
         <NetworkVisualization />
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">

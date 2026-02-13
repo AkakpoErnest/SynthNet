@@ -100,12 +100,14 @@ function Scene({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: number
         <Node key={i} position={n.pos} isValidator={n.validator} mouse={mouse} />
       ))}
       <OrbitControls
-        enableZoom={false}
-        enablePan={false}
+        enableZoom
+        enablePan
         autoRotate
         autoRotateSpeed={0.4}
         maxPolarAngle={Math.PI / 2 + 0.2}
         minPolarAngle={Math.PI / 2 - 0.2}
+        minDistance={2}
+        maxDistance={12}
       />
     </>
   )
