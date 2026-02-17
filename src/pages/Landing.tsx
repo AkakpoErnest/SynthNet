@@ -51,9 +51,14 @@ export default function Landing() {
 
   return (
     <div className="relative">
-      {/* Hero - no video, solid background for 3D scene */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0F172A]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A] via-transparent to-[#0F172A] z-10 pointer-events-none" />
+      {/* Hero - no video, solid background for 3D scene, fades into video section */}
+      <section
+        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+        style={{
+          background: 'linear-gradient(to bottom, #0F172A 0%, #0F172A 65%, rgba(15, 23, 42, 0.85) 80%, rgba(15, 23, 42, 0.4) 92%, transparent 100%)',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A] via-transparent to-transparent z-10 pointer-events-none" />
         <NetworkVisualization />
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
           <motion.h1
