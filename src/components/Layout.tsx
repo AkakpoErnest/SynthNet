@@ -30,7 +30,7 @@ export default function Layout() {
         <source src="/0212.mp4" type="video/mp4" />
         <source src="/0212.mov" type="video/quicktime" />
       </video>
-      <div className="fixed inset-0 bg-[#0F172A]/60 pointer-events-none -z-[9]" aria-hidden />
+      <div className="fixed inset-0 bg-[#0F172A]/75 pointer-events-none -z-[9]" aria-hidden />
       <Navbar />
       <main className="flex-1 pt-16 flex flex-col relative z-0">
         <AnimatePresence mode="wait">
