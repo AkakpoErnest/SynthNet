@@ -60,7 +60,7 @@ export default function Landing() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A] via-transparent to-transparent z-10 pointer-events-none" />
         <NetworkVisualization />
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center pointer-events-none">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export default function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-10"
+            className="mt-10 pointer-events-auto"
           >
             <Link to="/request">
               <motion.span

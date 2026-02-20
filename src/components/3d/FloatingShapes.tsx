@@ -4,10 +4,17 @@ import * as THREE from 'three'
 
 function WireframeBox() {
   const ref = useRef<THREE.Mesh>(null)
+  const basePos = useRef([2.5, 0.5, -2])
   useFrame((state) => {
     if (!ref.current) return
-    ref.current.rotation.x = state.clock.elapsedTime * 0.15
-    ref.current.rotation.y = state.clock.elapsedTime * 0.2
+    const t = state.clock.elapsedTime
+    ref.current.rotation.x = t * 0.15
+    ref.current.rotation.y = t * 0.2
+    ref.current.position.set(
+      basePos.current[0],
+      basePos.current[1] + Math.sin(t * 0.5) * 0.08,
+      basePos.current[2]
+    )
   })
   return (
     <mesh ref={ref} position={[2.5, 0.5, -2]}>
@@ -19,9 +26,16 @@ function WireframeBox() {
 
 function WireframeSphere() {
   const ref = useRef<THREE.Mesh>(null)
+  const basePos = useRef([-2.2, -0.3, -1.5])
   useFrame((state) => {
     if (!ref.current) return
-    ref.current.rotation.y = state.clock.elapsedTime * 0.12
+    const t = state.clock.elapsedTime
+    ref.current.rotation.y = t * 0.12
+    ref.current.position.set(
+      basePos.current[0] + Math.cos(t * 0.4) * 0.06,
+      basePos.current[1],
+      basePos.current[2]
+    )
   })
   return (
     <mesh ref={ref} position={[-2.2, -0.3, -1.5]}>
