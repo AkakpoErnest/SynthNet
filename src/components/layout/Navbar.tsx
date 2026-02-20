@@ -8,6 +8,7 @@ import {
   Menu,
   X,
   Zap,
+  Wallet,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -53,6 +54,15 @@ export default function Navbar() {
                 </motion.span>
               </Link>
             ))}
+            <motion.button
+              type="button"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Wallet className="w-4 h-4" />
+              Connect Wallet
+            </motion.button>
           </nav>
 
           <button
@@ -88,6 +98,14 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
+              <button
+                type="button"
+                onClick={() => setSidebarOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white mt-2"
+              >
+                <Wallet className="w-4 h-4" />
+                Connect Wallet
+              </button>
             </nav>
           </motion.div>
         )}

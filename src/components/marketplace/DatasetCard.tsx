@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { FileText, Code, MessageCircle, Download } from 'lucide-react'
 import type { Dataset } from '../../utils/mockData'
 import type { ComponentType } from 'react'
+import { useToast } from '../../context/ToastContext'
 
 const typeIcons: Record<'text' | 'code' | 'conversations', ComponentType<{ className?: string }>> = {
   text: FileText,
@@ -23,6 +24,13 @@ export default function DatasetCard({
   onPreview: () => void
 }) {
   const Icon = typeIcons[dataset.type]
+  const { toast } = useToast()
+  const previewSnippet = dataset.preview?.[0] ?? ''
+
+  const handleDownload = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    toast(`"${dataset.name}" downloaded successfully`, 'success')
+  }
 
   return (
     <motion.div
@@ -43,14 +51,19 @@ export default function DatasetCard({
         </div>
       </div>
       <h3 className="text-lg font-semibold text-white mb-1 line-clamp-2">{dataset.name}</h3>
-      <p className="text-sm text-white/50 mb-4">
+      <p className="text-sm text-white/50 mb-3">
         {dataset.samples.toLocaleString()} samples · {typeLabels[dataset.type]}
       </p>
+      {previewSnippet && (
+        <pre className="text-xs text-white/40 font-mono bg-white/5 rounded-lg px-3 py-2 mb-4 overflow-hidden text-ellipsis whitespace-nowrap border border-white/5">
+          {previewSnippet}
+        </pre>
+      )}
       <div className="flex items-center justify-between">
         <span className="text-xl font-bold text-[#3B82F6]">{dataset.price} TAO</span>
         <motion.button
           type="button"
-          onClick={(e) => e.stopPropagation()}
+          onClick={handleDownload}
           className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 text-white text-sm font-medium hover:bg-white/15 transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}

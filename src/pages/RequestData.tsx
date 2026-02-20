@@ -84,27 +84,47 @@ export default function RequestData() {
               className="space-y-6"
             >
               <h2 className="text-xl font-semibold text-white">Quality settings</h2>
-              <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Diversity: {diversity}%</label>
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  value={diversity}
-                  onChange={(e) => setDiversity(Number(e.target.value))}
-                  className="w-full h-2 rounded-full bg-white/10 accent-[#3B82F6]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Creativity: {creativity}%</label>
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  value={creativity}
-                  onChange={(e) => setCreativity(Number(e.target.value))}
-                  className="w-full h-2 rounded-full bg-white/10 accent-[#8B5CF6]"
-                />
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-medium text-white/80">Diversity</label>
+                    <span className="text-sm font-bold text-[#3B82F6] tabular-nums">{diversity}%</span>
+                  </div>
+                  <div className="relative h-3 rounded-full bg-white/10 overflow-hidden">
+                    <div
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transition-all duration-150"
+                      style={{ width: `${diversity}%` }}
+                    />
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      value={diversity}
+                      onChange={(e) => setDiversity(Number(e.target.value))}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-medium text-white/80">Creativity</label>
+                    <span className="text-sm font-bold text-[#8B5CF6] tabular-nums">{creativity}%</span>
+                  </div>
+                  <div className="relative h-3 rounded-full bg-white/10 overflow-hidden">
+                    <div
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] transition-all duration-150"
+                      style={{ width: `${creativity}%` }}
+                    />
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      value={creativity}
+                      onChange={(e) => setCreativity(Number(e.target.value))}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}
