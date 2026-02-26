@@ -111,6 +111,15 @@
       color: #e2e8f0;
       font-style: italic;
     }
+    .solution {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .solution strong { color: #a7f3d0; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .card {
       background: rgba(30, 41, 59, 0.6);
@@ -287,6 +296,15 @@
     </ul>
     <div class="blocker" style="margin-top: 2rem;">
       <strong>Biggest blocker:</strong> Defining incentive curves and emission rules so that TAO flow ties to measurable quality (e.g. downstream usefulness or human/validator agreement) without making emissions unsustainable or easy to game.
+    </div>
+    <div class="solution" style="margin-top: 1rem;">
+      <strong>Proposed approach:</strong>
+      <ul style="margin-top: 1rem;">
+        <li><strong>Multi-signal quality</strong> — Spec/format + privacy/dedup + downstream utility + periodic human audits</li>
+        <li><strong>Quality &gt; volume</strong> — Concave aggregation (top‑K) so spam doesn’t increase emissions</li>
+        <li><strong>Honest validators</strong> — Audit-backed reliability; inaccurate scorers lose influence/dividends</li>
+        <li><strong>Hard to game</strong> — Rotating private benchmarks + canaries + redundancy across validators</li>
+      </ul>
     </div>
     <span class="slide-num">9 / 10</span>
   </div>

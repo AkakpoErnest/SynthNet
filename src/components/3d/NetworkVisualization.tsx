@@ -5,6 +5,7 @@ import * as THREE from 'three'
 import ParticleSystem from './ParticleSystem'
 import FloatingShapes from './FloatingShapes'
 import { MOCK_MINERS } from '../../utils/mockData'
+import type { Miner } from '../../utils/mockData'
 
 const NODE_COUNT = 28
 const CONNECTION_DISTANCE = 2.8
@@ -21,8 +22,8 @@ function Node({
   isValidator: boolean
   mouse: React.MutableRefObject<{ x: number; y: number }>
   nodeIndex: number
-  miner: { id: string; stake: number; trust: number; datasetsGenerated: number; uptime: number }
-  onHover: (data: { index: number; miner: typeof MOCK_MINERS[0] } | null) => void
+  miner: Miner
+  onHover: (data: { index: number; miner: Miner } | null) => void
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
   const materialRef = useRef<THREE.MeshStandardMaterial>(null)
@@ -76,7 +77,7 @@ function Scene({
   onNodeHover,
 }: {
   mouse: React.MutableRefObject<{ x: number; y: number }>
-  onNodeHover: (data: { index: number; miner: (typeof MOCK_MINERS)[0] } | null) => void
+  onNodeHover: (data: { index: number; miner: Miner } | null) => void
 }) {
   const miners = useMemo(() => MOCK_MINERS, [])
   const nodes = useMemo(() => {
@@ -148,7 +149,7 @@ export default function NetworkVisualization() {
   const mouse = useRef({ x: 0, y: 0 })
   const [hoveredNode, setHoveredNode] = useState<{
     index: number
-    miner: (typeof MOCK_MINERS)[0]
+    miner: Miner
   } | null>(null)
 
   return (

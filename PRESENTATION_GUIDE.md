@@ -84,7 +84,13 @@ Use this as your script. Go through each step, navigate to the page, and say the
 ## 9. CHALLENGES & NEXT STEPS (if asked)
 
 **Say:**
-> "The main challenge is incentive design — rewarding quality over volume, and validators for accurate scoring, without making emissions easy to game. We're working on tying TAO flow to measurable quality, like downstream usefulness or human-validator agreement. We'd welcome feedback on subnet designs and mechanism design."
+> "The main challenge is incentive design: rewarding quality over volume, and keeping validators honest, without making emissions easy to game. Our proposed approach is: (1) a multi-signal quality score (spec adherence + privacy/dedup + downstream utility + periodic human audits), (2) concave aggregation like top‑K scoring so spamming doesn’t help, (3) audit-backed validator reliability so inaccurate scorers lose influence/dividends, and (4) a hybrid emission pool that shifts toward quality‑adjusted real demand as the marketplace grows."
+
+**If they want more detail (10–15 seconds):**
+- "Some evaluation stays private/rotating (benchmarks + canaries) so miners can’t just overfit the metric."
+- "Validators are scored too (agreement with audits / reliable peers), so delegations flow to honest validators."
+
+Reference: `docs/incentive-design.md`.
 
 ---
 
