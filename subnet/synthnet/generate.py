@@ -91,7 +91,7 @@ def generate_samples(
     """
     quantity = min(quantity, 500)
 
-    model = os.getenv("OLLAMA_MODEL", "llama3.2")
+    model = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
     base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     temperature = 0.3 + (creativity / 100.0) * 0.9  # 0–100 → 0.3–1.2
 
