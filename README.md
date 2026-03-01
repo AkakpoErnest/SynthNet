@@ -23,7 +23,7 @@ A production-ready frontend for the **SynthNet** Bittensor subnet: a decentraliz
 ## Project structure
 
 ```
-src/
+src/                                  # Frontend (React + TypeScript)
 ├── components/
 │   ├── 3d/
 │   │   ├── NetworkVisualization.tsx   # Three.js hero (nodes + edges)
@@ -64,6 +64,41 @@ src/
 ├── utils/
 │   └── mockData.ts
 └── App.tsx
+
+subnet/                               # Backend (Python Bittensor subnet)
+├── protocol.py                        # Bittensor subnet protocol definitions
+├── requirements.txt                   # Python dependencies
+├── neurons/
+│   ├── miner.py                       # Miner implementation
+│   └── validator.py                   # Validator implementation
+└── synthnet/
+    ├── __init__.py
+    ├── generate.py                    # Data generation utilities
+    └── score.py                       # Quality scoring logic
+```
+
+## Backend (Python Subnet)
+
+The `subnet/` folder contains the Bittensor subnet implementation:
+
+- **protocol.py** — Defines the request/response protocol for synthetic data generation and quality scoring.
+- **neurons/miner.py** — Miner node that responds to data requests and generates synthetic data.
+- **neurons/validator.py** — Validator node that scores and validates generated datasets.
+- **synthnet/generate.py** — Core data generation logic (templates, LLM calls, batch processing).
+- **synthnet/score.py** — Quality scoring algorithms (diversity, accuracy, completeness metrics).
+- **requirements.txt** — Python dependencies (bittensor, pydantic, etc.).
+
+### Running the subnet
+
+```bash
+cd subnet
+pip install -r requirements.txt
+
+# Start a miner
+python neurons/miner.py --wallet.name <name> --wallet.hotkey <hotkey>
+
+# Start a validator
+python neurons/validator.py --wallet.name <name> --wallet.hotkey <hotkey>
 ```
 
 ## Mock data (example from spec)
