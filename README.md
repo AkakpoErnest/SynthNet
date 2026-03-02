@@ -81,24 +81,83 @@ subnet/                               # Backend (Python Bittensor subnet)
 
 The `subnet/` folder contains the Bittensor subnet implementation:
 
-- **protocol.py** — Defines the request/response protocol for synthetic data generation and quality scoring.
-- **neurons/miner.py** — Miner node that responds to data requests and generates synthetic data.
-- **neurons/validator.py** — Validator node that scores and validates generated datasets.
-- **synthnet/generate.py** — Core data generation logic (templates, LLM calls, batch processing).
-- **synthnet/score.py** — Quality scoring algorithms (diversity, accuracy, completeness metrics).
-- **requirements.txt** — Python dependencies (bittensor, pydantic, etc.).
+| File | Purpose |
+|---|---|
+| `protocol.py` | `SynthNetSynapse` — request/response contract between validators and miners |
+| `neurons/miner.py` | Registers an axon on Bittensor, calls Ollama to generate data, returns samples |
+| `neurons/validator.py` | Queries miners, scores responses, sets weights on-chain via EMA |
+| `synthnet/generate.py` | Ollama HTTP calls + robust response parser for text / code / conversations |
+| `synthnet/score.py` | Four scoring functions: format, quantity, diversity, coherence → composite [0–100] |
 
-### Running the subnet
+### Scoring weights
+
+| Metric | Weight | Logic |
+|---|---|---|
+| Diversity | 30% | Unique n-gram ratio across samples |
+| Quantity | 25% | Ratio returned vs requested (0 below 50%) |
+| Coherence | 25% | Penalizes empty, short, duplicate, non-alpha samples |
+| Format | 20% | % parseable in requested format (json/jsonl/csv/txt) |
+
+### Setup
 
 ```bash
 cd subnet
+python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
+```
 
-# Start a miner
-python neurons/miner.py --wallet.name <name> --wallet.hotkey <hotkey>
+### Ollama (local LLM)
 
-# Start a validator
-python neurons/validator.py --wallet.name <name> --wallet.hotkey <hotkey>
+The miner uses [Ollama](https://ollama.com) to generate data locally — no API key needed.
+
+```bash
+# Install Ollama: https://ollama.com
+ollama serve          # keep running in background
+ollama pull qwen2.5:7b
+```
+
+### Smoke test (no Bittensor needed)
+
+```bash
+python -c "
+from synthnet.generate import generate_samples
+s = generate_samples('text', 'customer service', 5, 'txt', 70, 60)
+print(len(s), 'samples'); print(s[0])
+"
+```
+
+### Register on testnet
+
+```bash
+# Create wallet
+btcli wallet new_coldkey --wallet.name synthnet
+btcli wallet new_hotkey --wallet.name synthnet --wallet.hotkey miner1
+
+# Get test TAO from Bittensor Discord #faucet channel, then:
+btcli subnet register --netuid <uid> --wallet.name synthnet --wallet.hotkey miner1 --subtensor.network test
+```
+
+### Run miner
+
+```bash
+python neurons/miner.py \
+  --netuid <uid> \
+  --wallet.name synthnet \
+  --wallet.hotkey miner1 \
+  --subtensor.network test \
+  --logging.debug
+```
+
+### Run validator
+
+```bash
+python neurons/validator.py \
+  --netuid <uid> \
+  --wallet.name synthnet \
+  --wallet.hotkey default \
+  --subtensor.network test \
+  --logging.debug
 ```
 
 ## Mock data (example from spec)
