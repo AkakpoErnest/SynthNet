@@ -4,6 +4,7 @@ A production-ready frontend for the **SynthNet** Bittensor subnet: a decentraliz
 
 ## Stack
 
+**Frontend**
 - **React 19** + **TypeScript**
 - **Vite** for build and dev server
 - **Tailwind CSS** (v4) for styling and glassmorphism
@@ -12,6 +13,11 @@ A production-ready frontend for the **SynthNet** Bittensor subnet: a decentraliz
 - **Recharts** for quality and metrics charts
 - **Lucide React** for icons
 - **React Router v7** for navigation
+
+**Backend (Subnet)**
+- **Python** + **Bittensor** for decentralized miner/validator network
+- **Ollama** + **qwen2.5:7b** for local LLM-based synthetic data generation (no API key needed)
+- **Custom scoring** — diversity, quantity, coherence, format → composite weight on-chain
 
 ## Design
 
